@@ -1,0 +1,12 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --profile --raw --config build/webpack.dev.conf.js",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "afuning",
+  "license": "MIT"
+}
