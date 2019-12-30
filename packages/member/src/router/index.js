@@ -5,6 +5,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    name: 'entry',
+    redirect: '/home'
+  },
+  {
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "member-home" */ '../pages/home.vue')
