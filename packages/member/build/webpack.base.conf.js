@@ -29,7 +29,9 @@ const baseWebpackConfig = {
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? './'
-      : '/'
+      : '/',
+    library: 'singleMember',
+    libraryTarget: 'window'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

@@ -4,7 +4,7 @@ import App from './app.vue'
 import singleSpaVue from 'single-spa-vue'
 
 const vueOptions = {
-  el: '#vue',
+  el: '#single-vue',
   router,
   render: h => h(App)
 }
@@ -20,7 +20,7 @@ const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: vueOptions
 })
-
+console.log(vueLifecycles)
 export const bootstrap = vueLifecycles.bootstrap // 启动时
 export const mount = vueLifecycles.mount // 挂载时
 export const unmount = vueLifecycles.unmount // 卸载时

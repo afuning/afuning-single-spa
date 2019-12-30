@@ -7,7 +7,7 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import('../pages/home.vue')
+    component: () => import(/* webpackChunkName: "member-home" */ '../pages/home.vue')
   },
   {
     path: '/about',
@@ -15,12 +15,12 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../pages/about.vue')
+    component: () => import(/* webpackChunkName: "member-about" */ '../pages/about.vue')
   }
 ]
 const router = new VueRouter({
   // 子项目设置history，base设置为父项目的一级路由。
-  base: '/vue/',
+  base: '/member/',
   // mode: 'history',
   routes
 })

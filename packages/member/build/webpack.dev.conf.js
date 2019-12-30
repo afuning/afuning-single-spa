@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const StatsPlugin = require('stats-webpack-plugin')
 const portfinder = require('portfinder')
+const address = require('address')
 
 const HOST = process.env.HOST || config.dev.host
 const PORT = process.env.PORT || config.dev.port
@@ -69,14 +70,17 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
+      const localAddress = address.ip()
       // publish the new Port, necessary for e2e tests
       process.env.PORT = port
       // add port to devServer config
       devWebpackConfig.devServer.port = port
+      // 配置output publicPath
+      devWebpackConfig.output.publicPath = `http://${localAddress}:${port}/`
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+          messages: [`Your application is running here: http://${localAddress}:${port}`]
         },
         onErrors: utils.createNotifierCallback()
       }))

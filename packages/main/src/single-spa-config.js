@@ -32,17 +32,16 @@ const getManifest = async (url, bundle) => {
 }
 
 singleSpa.registerApplication( // 注册微前端服务
-  'vueMember',
+  'single-member',
   async () => {
-    console.log(1)
     // 注册用函数，
     // return 一个singleSpa 模块对象，模块对象来自于要加载的js导出
     // 如果这个函数不需要在线引入，只需要本地引入一块加载：
     // () => import('xxx/main.js')
-    let singleVue = null
-    await getManifest('http://127.0.0.1:7002/manifest.json', 'app')
-    singleVue = window.singleVue
-    return singleVue
+    let singleMember = null
+    await getManifest(`${_URL_}:7002/manifest.json`, 'app')
+    singleMember = window.singleMember
+    return singleMember
   },
   location => location.pathname.startsWith('/member') // 配置微前端模块前缀
 )

@@ -10,9 +10,7 @@
       id="single-vue"
       class="single-spa-vue"
     >
-      <div id="vue">
-        111
-      </div>
+      <div id="vue" />
     </div>
   </div>
 </template>
