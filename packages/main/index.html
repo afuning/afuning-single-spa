@@ -6,8 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="pragma" content="no-cache">
   <title>微前端</title>
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "Vue": "//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
+        "VueRouter": "//cdnjs.cloudflare.com/ajax/libs/vue-router/3.1.3/vue-router.min.js",
+        "app": "./app.js"
+      }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.7/system.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.7/extras/amd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.7/extras/use-default.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.7/extras/named-exports.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.7/extras/named-register.min.js"></script>
 </head>
 <body>
   <div id="single-app"></div>
+  <script>
+    (function () {
+      System.import('app')
+    })()
+  </script>
 </body>
 </html>

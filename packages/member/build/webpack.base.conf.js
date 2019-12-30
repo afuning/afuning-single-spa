@@ -22,7 +22,7 @@ const createLintingRule = () => ({
 const baseWebpackConfig = {
   context: resolve('./'),
   entry: {
-    app: ['./src/main.js']
+    singleSpaEntry: ['./src/main.js']
   },
   output: {
     path: resolve('dist'),
@@ -30,8 +30,7 @@ const baseWebpackConfig = {
     publicPath: process.env.NODE_ENV === 'production'
       ? './'
       : '/',
-    library: 'singleMember',
-    libraryTarget: 'window'
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -88,6 +87,10 @@ const baseWebpackConfig = {
     new VueLoaderPlugin(),
     new WebpackBar()
   ],
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter'
+  },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

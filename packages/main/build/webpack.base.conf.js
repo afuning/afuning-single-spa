@@ -29,7 +29,8 @@ const baseWebpackConfig = {
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? './'
-      : '/'
+      : '/',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -86,6 +87,11 @@ const baseWebpackConfig = {
     new VueLoaderPlugin(),
     new WebpackBar()
   ],
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    System: 'SystemJs'
+  },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

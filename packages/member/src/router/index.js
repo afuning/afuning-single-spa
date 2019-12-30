@@ -21,7 +21,6 @@ const routes = [
 const router = new VueRouter({
   // 子项目设置history，base设置为父项目的一级路由。
   base: '/member/',
-  // mode: 'history',
   routes
 })
 

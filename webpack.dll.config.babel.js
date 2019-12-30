@@ -5,7 +5,7 @@ const WebpackBar = require('webpackbar')
 module.exports = {
   mode: 'production',
   entry: {
-    vendor: ['vue', 'vuex', 'element-ui']
+    vendor: ['vue', 'vuex']
   },
   output: {
     path: path.resolve(__dirname, 'dll'),
