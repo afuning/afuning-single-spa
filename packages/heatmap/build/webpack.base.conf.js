@@ -22,7 +22,7 @@ const createLintingRule = () => ({
 const baseWebpackConfig = {
   context: resolve('./'),
   entry: {
-    app: ['./src/main.js']
+    singleSpaEntry: ['./src/main.js']
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

@@ -22,7 +22,15 @@ const createLintingRule = () => ({
 const baseWebpackConfig = {
   context: resolve('./'),
   entry: {
-    app: ['./src/main.js']
+    singleSpaEntry: ['./src/main.js']
+  },
+  output: {
+    path: resolve('dist'),
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? './'
+      : '/',
+    libraryTarget: 'umd'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

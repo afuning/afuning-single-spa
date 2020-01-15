@@ -1,20 +1,20 @@
-// import './single-spa-config.js'
 import Vue from 'vue'
-import App from './app.vue'
 import router from './router/'
-import './element-ui/index.js'
-import './assets/css/index.scss'
-// import initConfig from './config'
+import App from './app.vue'
 import singleSpaVue from 'single-spa-vue'
 
 const vueOptions = {
+  el: '#layout-app',
   router,
   render: h => h(App)
 }
+
 // 判断当前页面使用singleSpa应用,不是就渲染
 if (!window.singleSpaNavigate) {
+  delete vueOptions.el
   new Vue(vueOptions).$mount('#app')
 }
+
 // singleSpaVue包装一个vue微前端服务对象
 const vueLifecycles = singleSpaVue({
   Vue,

@@ -38,6 +38,14 @@ exports.cssLoaders = function (options) {
         })
       })
     }
+    // if (loader === 'sass' && !options.usePostCSS) {
+    //   loaders.push({
+    //     loader: 'sass-resources-loader',
+    //     options: {
+    //       resources: path.join(__dirname, '..', 'src/assets/scss/_variables.scss')
+    //     }
+    //   })
+    // }
 
     // Extract CSS when that option is specified
     // (which is the case during production build)
@@ -74,6 +82,7 @@ exports.styleLoaders = function (options) {
     const loader = loaders[extension]
     output.push({
       test: new RegExp('\\.' + extension + '$'),
+      include: [path.join(__dirname, '..', 'src'), ],
       use: loader
     })
   }

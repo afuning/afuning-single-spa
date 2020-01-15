@@ -1,16 +1,15 @@
 <template>
-  <div class="app">
-    <router-view />
+  <div class="export-record">
+    hahah
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App'
+  name: 'ExportRecord'
 }
 </script>
 
 <style lang="scss" scoped>
-.app {}
+.export-record {}
 </style>

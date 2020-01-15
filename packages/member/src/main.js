@@ -4,14 +4,12 @@ import App from './app.vue'
 import singleSpaVue from 'single-spa-vue'
 
 const vueOptions = {
-  el: '#single-vue',
   router,
   render: h => h(App)
 }
 
 // 判断当前页面使用singleSpa应用,不是就渲染
 if (!window.singleSpaNavigate) {
-  delete vueOptions.el
   new Vue(vueOptions).$mount('#app')
 }
 

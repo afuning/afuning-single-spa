@@ -1,5 +1,4 @@
 'use strict'
-const path = require('path')
 const utils = require('./utils')
 const config = require('./config')
 const webpack = require('webpack')
@@ -7,24 +6,15 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const StatsPlugin = require('stats-webpack-plugin')
 const portfinder = require('portfinder')
 const address = require('address')
-const localAddress = address.ip()
 
 const HOST = process.env.HOST || config.dev.host
 const PORT = process.env.PORT || config.dev.port
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
-  output: {
-    path: resolve('dist'),
-    filename: '[name].js',
-    publicPath: `http://${localAddress}:${PORT}/`,
-    libraryTarget: 'umd'
-  },
   // cheap-module-eval-source-map is faster for development
   devtool: 'eval-source-map',
 
@@ -54,10 +44,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      _URL_: JSON.stringify(`http://${localAddress}`)
-    }),
     new webpack.HotModuleReplacementPlugin(),
+    new StatsPlugin('manifest.json', {
+      chunkModules: false,
+      entrypoints: true,
+      source: false,
+      chunks: false,
+      modules: false,
+      assets: false,
+      children: false,
+      exclude: [/node_modules/]
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -73,10 +70,13 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
+      const localAddress = address.ip()
       // publish the new Port, necessary for e2e tests
       process.env.PORT = port
       // add port to devServer config
       devWebpackConfig.devServer.port = port
+      // 配置output publicPath
+      devWebpackConfig.output.publicPath = `http://${localAddress}:${port}/`
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {

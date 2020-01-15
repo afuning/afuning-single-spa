@@ -7,6 +7,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const StatsPlugin = require('stats-webpack-plugin')
 const portfinder = require('portfinder')
 const address = require('address')
 const localAddress = address.ip()
@@ -19,14 +20,14 @@ function resolve (dir) {
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
+  // cheap-module-eval-source-map is faster for development
+  devtool: 'eval-source-map',
   output: {
     path: resolve('dist'),
     filename: '[name].js',
     publicPath: `http://${localAddress}:${PORT}/`,
     libraryTarget: 'umd'
   },
-  // cheap-module-eval-source-map is faster for development
-  devtool: 'eval-source-map',
 
   // these devServer options should be customized in /config/index.js
   devServer: {
@@ -54,10 +55,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      _URL_: JSON.stringify(`http://${localAddress}`)
-    }),
     new webpack.HotModuleReplacementPlugin(),
+    new StatsPlugin('manifest.json', {
+      chunkModules: false,
+      entrypoints: true,
+      source: false,
+      chunks: false,
+      modules: false,
+      assets: false,
+      children: false,
+      exclude: [/node_modules/]
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
@@ -77,6 +85,8 @@ module.exports = new Promise((resolve, reject) => {
       process.env.PORT = port
       // add port to devServer config
       devWebpackConfig.devServer.port = port
+      // 配置output publicPath
+      devWebpackConfig.output.publicPath = `http://${localAddress}:${port}/`
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
