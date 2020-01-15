@@ -1,14 +1,15 @@
 <template>
-  <router-view />
+  <div class="device">
+    设备管理
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App'
+  name: 'Device'
 }
 </script>
 
 <style lang="scss" scoped>
-.app {}
+.device {}
 </style>

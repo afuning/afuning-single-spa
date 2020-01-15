@@ -29,6 +29,9 @@ export default {
     TopNavbar,
     SideNavbar
   },
+  mounted () {
+    console.log(111)
+  },
   methods: {
     goToChildRoute (e) {
       // 官方指定跳转

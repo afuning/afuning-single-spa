@@ -18,7 +18,7 @@ export default {
     goToChildRoute (e) {
       // 官方指定跳转
       e.preventDefault()
-      navigateToUrl('/layout/system')
+      navigateToUrl('/layout')
     }
   }
 }

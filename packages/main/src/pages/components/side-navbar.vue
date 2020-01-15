@@ -42,6 +42,12 @@ export default {
             parentId: 509,
             name: '下载中心',
             url: '/layout/system/export-record'
+          },
+          {
+            menuId: 515,
+            parentId: 509,
+            name: '设备管理',
+            url: '/layout/system/device'
           }
         ]
       }]

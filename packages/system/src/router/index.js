@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import ExportRecord from '../pages/export-record.vue'
+import Device from '../pages/device.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +14,12 @@ const routes = [
   {
     path: '/export-record',
     name: 'ExportRecord',
-    component: () => import(/* webpackChunkName: "system-export-record" */ '../pages/export-record.vue')
+    component: ExportRecord
+  },
+  {
+    path: '/device',
+    name: 'Device',
+    component: Device
   }
 ]
 const router = new VueRouter({

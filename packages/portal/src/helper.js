@@ -2,7 +2,10 @@ import * as singleSpa from 'single-spa'
 const System = window.System
 export function hashPrefix (prefix) {
   if (!prefix) {
-    return () => true
+    return () => {
+      console.log('载入主站框架')
+      return true
+    }
   }
   return function (location) {
     return location.pathname.startsWith(`${prefix}`)

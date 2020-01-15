@@ -1,6 +1,6 @@
 <template>
   <div class="export-record">
-    hahah
+    下载中心
   </div>
 </template>
 
