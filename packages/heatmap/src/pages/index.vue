@@ -2,7 +2,7 @@
   <div class="export-record">
     热力图
     <a
-      href="/layout"
+      href="/layout/system"
       @click="goToChildRoute"
     >
       管理后台
@@ -18,7 +18,7 @@ export default {
     goToChildRoute (e) {
       // 官方指定跳转
       e.preventDefault()
-      navigateToUrl('/layout')
+      navigateToUrl('/layout/system')
     }
   }
 }

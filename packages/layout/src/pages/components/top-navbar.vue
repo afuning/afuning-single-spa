@@ -16,7 +16,7 @@
       <div class="top-navbar__right">
         <el-button
           round
-          @click="gotoRouteHandle('/main/heatmap')"
+          @click="gotoRouteHandle('/heatmap/index')"
         >
           热力图
         </el-button>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { navigateToUrl } from 'single-spa'
+// import { navigateToUrl } from 'single-spa'
 
 export default {
   name: 'TopNavbar',
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     gotoRouteHandle (url) {
-      navigateToUrl(url)
+      this.$router.push(url)
     }
   }
 }

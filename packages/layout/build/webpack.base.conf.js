@@ -24,14 +24,6 @@ const baseWebpackConfig = {
   entry: {
     singleSpaEntry: ['./src/main.js']
   },
-  output: {
-    path: resolve('dist'),
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? './'
-      : '/',
-    libraryTarget: 'umd'
-  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

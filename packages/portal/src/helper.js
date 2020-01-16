@@ -8,6 +8,7 @@ export function hashPrefix (prefix) {
     }
   }
   return function (location) {
+    console.log(location.pathname, location.pathname.startsWith(`${prefix}`))
     return location.pathname.startsWith(`${prefix}`)
   }
 }

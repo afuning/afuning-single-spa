@@ -1,7 +1,10 @@
 {
-  "name": "member",
+  "name": "layout",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --profile --raw --config build/webpack.dev.conf.js",
     "start": "npm run dev"

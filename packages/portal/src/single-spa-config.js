@@ -5,17 +5,9 @@ async function register () {
   const loadList = []
   loadList.push(
     loadApp(
-      'single-main',
-      '',
-      `${_URL_}:7001/app.js`,
-      ''
-    )
-  )
-  loadList.push(
-    loadApp(
-      'single-member',
-      '/layout/member',
-      `${_URL_}:7002/singleSpaEntry.js`,
+      'single-layout',
+      '/layout',
+      `${_URL_}:7001/singleSpaEntry.js`,
       ''
     )
   )
@@ -30,7 +22,7 @@ async function register () {
   loadList.push(
     loadApp(
       'single-heatmap',
-      '/main/heatmap',
+      '/heatmap',
       `${_URL_}:7004/singleSpaEntry.js`,
       ''
     )

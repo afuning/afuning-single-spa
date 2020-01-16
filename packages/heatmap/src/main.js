@@ -4,7 +4,6 @@ import App from './app.vue'
 import singleSpaVue from 'single-spa-vue'
 
 const vueOptions = {
-  el: '#layout-app',
   router,
   render: h => h(App)
 }
