@@ -27,7 +27,7 @@
     "html-webpack-plugin": "^4.0.0-beta.11",
     "lerna": "^3.18.3",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-notifier": "^6.0.0",
+    "node-notifier": "^8.0.1",
     "node-sass": "^4.13.0",
     "portfinder": "^1.0.25",
     "postcss-loader": "^3.0.0",
